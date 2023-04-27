@@ -5,7 +5,7 @@ const validator = require('validator');
 
 const SALT_ROUNDS = 10;
 
-function registerUser(name, email, password, callback) {
+function registerUser(email, password, callback) {
   if (!validator.isEmail(email)) {
     return callback('Invalid email address');
   }
@@ -19,8 +19,8 @@ function registerUser(name, email, password, callback) {
       return callback(err);
     }
 
-    const stmt = db.prepare('INSERT INTO users (name, email, password) VALUES (?, ?, ?)');
-    stmt.run(name, email, hash, function(err) {
+    const stmt = db.prepare('INSERT INTO users (email, password) VALUES (?, ?)');
+    stmt.run(email, hash, function(err) {
       if (err) {
         return callback(err);
       }

@@ -1,9 +1,9 @@
 const { registerUser } = require('../modules/registerUser');
 
 function register(req, res) {
-  const { name, email, password } = req.body;
+  const { email, password } = req.body;
 
-  registerUser(name, email, password, (err) => {
+  registerUser(email, password, (err) => {
     if (err) {
       return res.status(400).send({ error: err });
     }
@@ -15,3 +15,4 @@ function register(req, res) {
 module.exports = {
   register,
 };
+
