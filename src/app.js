@@ -6,6 +6,7 @@ const path = require('path');
 // Importing controllers
 const loginUser = require('./controllers/loginUser');
 const registerUser = require('./controllers/registerUser');
+const homeController = require('./controllers/homeController');
 
 const app = express();
 
